@@ -1,4 +1,4 @@
-# ioBroker.historian (ioBroker adapter `historian`)
+# iobroker.historian (ioBroker adapter `historian`)
 
 History of ioBroker states for the SCADA: a **native adapter** (RFC-008) whose engine is written in Rust
 (built from a private engine repository). It reads the Valkey stream that
