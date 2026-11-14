@@ -26,5 +26,4 @@ then `npm pack`.
 
 A tag `vX.Y.Z` of the engine repository builds the engine for win-x64, linux-x64 and linux-arm64 (macOS by hand
 only), creates its release and tells this repository (`.github/workflows/test-and-release.yml`), which puts the
-binaries into `bin/<platform>/` and builds the npm package with the version of `package.json`. While
-`package.json` is `"private": true` nothing is published: the package is kept as an artifact of the run.
+binaries into `bin/<platform>/`, builds the npm package and publishes it with the version of `package.json` (a version already on npm is not published again).
