@@ -2,44 +2,132 @@
     "i18n": false,
     "type": "panel",
     "items": {
-        "enabled": { "type": "checkbox", "label": "History on", "sm": 12, "md": 12 },
         "writeMode": {
             "type": "select",
             "label": "Write",
             "options": [
-                { "label": "on change", "value": "change" },
-                { "label": "every N seconds", "value": "interval" },
-                { "label": "on change, but at least every N seconds", "value": "changeOrInterval" }
+                {
+                    "label": "on change",
+                    "value": "change"
+                },
+                {
+                    "label": "every N seconds",
+                    "value": "interval"
+                },
+                {
+                    "label": "on change, but at least every N seconds",
+                    "value": "changeOrInterval"
+                }
             ],
-            "default": "change",
-            "hidden": "!data.enabled",
             "sm": 12,
             "md": 6,
-            "newLine": true
+            "defaultFunc": "instanceObj && instanceObj.native && instanceObj.native.writeMode !== undefined && instanceObj.native.writeMode !== null ? instanceObj.native.writeMode : 'change'"
         },
-        "writeInterval": { "type": "number", "label": "N (seconds)", "min": 0, "default": 0, "hidden": "!data.enabled || data.writeMode === 'change'", "sm": 12, "md": 3 },
-        "changesMinDelta": { "type": "number", "label": "Deadband (absolute)", "min": 0, "default": 0, "hidden": "!data.enabled", "sm": 12, "md": 3, "newLine": true },
-        "changesMinDeltaPercent": { "type": "number", "label": "Deadband (% of min..max)", "min": 0, "max": 100, "default": 0, "hidden": "!data.enabled", "sm": 12, "md": 3 },
-        "debounceTime": { "type": "number", "label": "Debounce (ms): log the value once it is stable", "min": 0, "default": 0, "hidden": "!data.enabled", "sm": 12, "md": 3 },
-        "ignoreZero": { "type": "checkbox", "label": "Ignore 0 and null", "default": false, "hidden": "!data.enabled", "sm": 12, "md": 3, "newLine": true },
-        "ignoreBelowNumber": { "type": "text", "label": "Ignore below", "hidden": "!data.enabled", "sm": 12, "md": 3 },
-        "ignoreAboveNumber": { "type": "text", "label": "Ignore above", "hidden": "!data.enabled", "sm": 12, "md": 3 },
-        "storageType": {
-            "type": "select",
-            "label": "Store as",
-            "options": [
-                { "label": "as it comes", "value": "" },
-                { "label": "Number", "value": "Number" },
-                { "label": "String", "value": "String" },
-                { "label": "Boolean", "value": "Boolean" }
-            ],
-            "default": "",
-            "hidden": "!data.enabled",
+        "writeInterval": {
+            "type": "number",
+            "label": "N (seconds)",
+            "min": 0,
+            "hidden": "data.writeMode === 'change'",
+            "sm": 12,
+            "md": 3,
+            "defaultFunc": "instanceObj && instanceObj.native && instanceObj.native.writeInterval !== undefined && instanceObj.native.writeInterval !== null ? instanceObj.native.writeInterval : 0"
+        },
+        "changesMinDelta": {
+            "type": "number",
+            "label": "Deadband (absolute)",
+            "min": 0,
+            "sm": 12,
+            "md": 3,
+            "newLine": true,
+            "defaultFunc": "instanceObj && instanceObj.native && instanceObj.native.changesMinDelta !== undefined && instanceObj.native.changesMinDelta !== null ? instanceObj.native.changesMinDelta : 0"
+        },
+        "changesMinDeltaPercent": {
+            "type": "number",
+            "label": "Deadband (% of min..max)",
+            "min": 0,
+            "max": 100,
+            "sm": 12,
+            "md": 3,
+            "defaultFunc": "instanceObj && instanceObj.native && instanceObj.native.changesMinDeltaPercent !== undefined && instanceObj.native.changesMinDeltaPercent !== null ? instanceObj.native.changesMinDeltaPercent : 0"
+        },
+        "debounceTime": {
+            "type": "number",
+            "label": "Debounce (ms): log the value once it is stable",
+            "min": 0,
+            "sm": 12,
+            "md": 3,
+            "defaultFunc": "instanceObj && instanceObj.native && instanceObj.native.debounceTime !== undefined && instanceObj.native.debounceTime !== null ? instanceObj.native.debounceTime : 0",
+            "hidden": "data.writeMode === 'interval'"
+        },
+        "blockTime": {
+            "type": "number",
+            "label": "Block time (ms): at most one value in this time",
+            "min": 0,
+            "defaultFunc": "instanceObj && instanceObj.native && instanceObj.native.blockTime !== undefined && instanceObj.native.blockTime !== null ? instanceObj.native.blockTime : 0",
+            "hidden": "data.writeMode === 'interval'",
+            "sm": 12,
+            "md": 3
+        },
+        "ignoreZero": {
+            "type": "checkbox",
+            "label": "Ignore 0 and null",
+            "default": false,
             "sm": 12,
             "md": 3,
             "newLine": true
         },
-        "round": { "type": "text", "label": "Round reads to digits", "hidden": "!data.enabled", "sm": 12, "md": 3 },
-        "disableSkippedValueLogging": { "type": "checkbox", "label": "Do not log the last unchanged value before a change", "default": false, "hidden": "!data.enabled || data.writeMode === 'interval'", "sm": 12, "md": 6 }
+        "ignoreBelowNumber": {
+            "type": "text",
+            "label": "Ignore below",
+            "sm": 12,
+            "md": 3
+        },
+        "ignoreAboveNumber": {
+            "type": "text",
+            "label": "Ignore above",
+            "sm": 12,
+            "md": 3
+        },
+        "storageType": {
+            "type": "select",
+            "label": "Store as",
+            "options": [
+                {
+                    "label": "as it comes",
+                    "value": ""
+                },
+                {
+                    "label": "Number",
+                    "value": "Number"
+                },
+                {
+                    "label": "String",
+                    "value": "String"
+                },
+                {
+                    "label": "Boolean",
+                    "value": "Boolean"
+                }
+            ],
+            "default": "",
+            "sm": 12,
+            "md": 3,
+            "newLine": true
+        },
+        "round": {
+            "type": "text",
+            "label": "Round reads to digits",
+            "sm": 12,
+            "md": 3,
+            "defaultFunc": "instanceObj && instanceObj.native && instanceObj.native.round !== undefined && instanceObj.native.round !== null ? instanceObj.native.round : ''"
+        },
+        "disableSkippedValueLogging": {
+            "type": "checkbox",
+            "label": "Do not log the last unchanged value before a change",
+            "default": false,
+            "hidden": "data.writeMode === 'interval'",
+            "sm": 12,
+            "md": 6
+        }
     }
 }

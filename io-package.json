@@ -1,8 +1,13 @@
 {
     "common": {
         "name": "historian",
-        "version": "0.1.0",
+        "version": "0.1.1",
         "news": {
+            "0.1.1": {
+                "en": "The dialog of a state: no second switch next to the one of admin, the defaults of the instance are taken, block time added; block time in the instance settings.",
+                "de": "Dialog eines Zustands: kein zweiter Schalter neben dem von Admin, die Standardwerte der Instanz werden übernommen, Blockzeit ergänzt; Blockzeit in den Instanzeinstellungen.",
+                "ru": "Диалог состояния: нет второго переключателя рядом с переключателем admin, берутся значения по умолчанию из экземпляра, добавлено время блокировки; время блокировки в настройках экземпляра."
+            },
             "0.1.0": {
                 "en": "First version: history of states from the Valkey stream of scada.js-controller into TimescaleDB, ClickHouse or InfluxDB 2, by a native engine; the custom settings of the history adapters; getHistory.",
                 "de": "Erste Version: Verlauf der Zustände aus dem Valkey-Stream des scada.js-controller in TimescaleDB, ClickHouse oder InfluxDB 2, mit nativer Engine; die Custom-Einstellungen der History-Adapter; getHistory.",
