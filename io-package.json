@@ -1,8 +1,13 @@
 {
     "common": {
         "name": "historian",
-        "version": "0.1.1",
+        "version": "0.1.2",
         "news": {
+            "0.1.2": {
+                "en": "Engine 0.1.1: history switched on or off for many thousands of states at once is followed completely (before, most of such changes were lost until a restart); the states with history are read again every 5 minutes.",
+                "de": "Engine 0.1.1: Wird der Verlauf für viele tausend Zustände auf einmal ein- oder ausgeschaltet, wird das vollständig übernommen (vorher gingen die meisten dieser Änderungen bis zu einem Neustart verloren); die Zustände mit Verlauf werden alle 5 Minuten neu gelesen.",
+                "ru": "Движок 0.1.1: включение или выключение истории сразу для многих тысяч состояний отслеживается полностью (раньше большая часть таких изменений терялась до перезапуска); состояния с историей перечитываются каждые 5 минут."
+            },
             "0.1.1": {
                 "en": "The dialog of a state: no second switch next to the one of admin, the defaults of the instance are taken, block time added; block time in the instance settings.",
                 "de": "Dialog eines Zustands: kein zweiter Schalter neben dem von Admin, die Standardwerte der Instanz werden übernommen, Blockzeit ergänzt; Blockzeit in den Instanzeinstellungen.",
