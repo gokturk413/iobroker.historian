@@ -46,6 +46,24 @@ jobs:
           if (!fs.existsSync('admin/' + io.common.icon)) fail('the icon is missing');
           console.log(pkg.name + ' ' + pkg.version + ': ok');
           "
+      # admin refuses a settings page that does not match its schema (0.1.0-0.1.2 had a field type it does not know)
+      - name: The admin pages match the schema of admin
+        run: |
+          npm install --no-save --no-audit --no-fund --prefix /tmp/ajv ajv@8 >/dev/null
+          curl -sfL -o /tmp/jsonConfig.schema.json https://raw.githubusercontent.com/ioBroker/ioBroker.admin/master/packages/jsonConfig/schemas/jsonConfig.json
+          node -e "
+          const fs = require('fs');
+          const Ajv = require('/tmp/ajv/node_modules/ajv');
+          const ajv = new (Ajv.default || Ajv)({ allErrors: true, strict: false, allowUnionTypes: true });
+          const validate = ajv.compile(JSON.parse(fs.readFileSync('/tmp/jsonConfig.schema.json', 'utf8')));
+          let bad = 0;
+          for (const f of ['admin/jsonConfig.json', 'admin/jsonCustom.json']) {
+            if (validate(JSON.parse(fs.readFileSync(f, 'utf8')))) { console.log(f + ': valid'); continue; }
+            bad++;
+            for (const e of validate.errors.filter(e => e.keyword !== 'if')) console.error(f + ' ' + e.instancePath + ': ' + e.message);
+          }
+          process.exit(bad ? 1 : 0);
+          "
 
   deploy:
     needs: check

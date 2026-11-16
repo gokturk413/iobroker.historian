@@ -306,9 +306,10 @@
                     "md": 6
                 },
                 "activationRequest": {
-                    "type": "textarea",
+                    "type": "text",
                     "label": "Activation request: send it to the vendor, enter the key you get back above",
                     "minRows": 3,
+                    "maxRows": 12,
                     "newLine": true,
                     "sm": 12
                 }
