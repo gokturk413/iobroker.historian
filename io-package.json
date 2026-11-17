@@ -1,8 +1,13 @@
 {
     "common": {
         "name": "historian",
-        "version": "0.1.3",
+        "version": "0.1.4",
         "news": {
+            "0.1.4": {
+                "en": "Engine 0.1.3, TimescaleDB: many new states are registered at once. Before, the first values of some hundred thousand new states were stored so slowly that the backlog ran full and changes were dropped.",
+                "de": "Engine 0.1.3, TimescaleDB: viele neue Zustände werden auf einmal registriert. Vorher wurden die ersten Werte von einigen hunderttausend neuen Zuständen so langsam gespeichert, dass der Rückstau volllief und Änderungen verworfen wurden.",
+                "ru": "Движок 0.1.3, TimescaleDB: много новых состояний регистрируются сразу. Раньше первые значения нескольких сотен тысяч новых состояний сохранялись так медленно, что очередь переполнялась и изменения отбрасывались."
+            },
             "0.1.3": {
                 "en": "The settings page opens in admin again (a field had a type admin does not know, so admin refused the whole page). Engine 0.1.2: historian --activation-request prints the activation request of a machine whose trial is over.",
                 "de": "Die Einstellungsseite öffnet sich in Admin wieder (ein Feld hatte einen Typ, den Admin nicht kennt, deshalb lehnte Admin die ganze Seite ab). Engine 0.1.2: historian --activation-request gibt die Aktivierungsanfrage einer Maschine aus, deren Testzeit abgelaufen ist.",

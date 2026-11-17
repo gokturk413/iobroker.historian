@@ -1,6 +1,6 @@
 {
     "name": "iobroker.historian",
-    "version": "0.1.3",
+    "version": "0.1.4",
     "description": "SCADA history: states from a Valkey stream into TimescaleDB, ClickHouse or InfluxDB; a native (Rust) adapter for scada.js-controller",
     "author": "gokturk413 <gokturk413@gmail.com>",
     "license": "UNLICENSED",
