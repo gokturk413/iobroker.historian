@@ -1,8 +1,13 @@
 {
     "common": {
         "name": "historian",
-        "version": "0.1.4",
+        "version": "0.1.5",
         "news": {
+            "0.1.5": {
+                "en": "Engine 0.1.4: when the trial is over the adapter stays running without history, so the button Create the activation request of the settings page works.",
+                "de": "Engine 0.1.4: Nach Ablauf der Testzeit läuft der Adapter ohne Verlauf weiter, damit die Schaltfläche Aktivierungsanfrage erstellen der Einstellungsseite funktioniert.",
+                "ru": "Движок 0.1.4: после окончания пробного периода адаптер продолжает работать без истории, чтобы кнопка Создать запрос активации на странице настроек работала."
+            },
             "0.1.4": {
                 "en": "Engine 0.1.3, TimescaleDB: many new states are registered at once. Before, the first values of some hundred thousand new states were stored so slowly that the backlog ran full and changes were dropped.",
                 "de": "Engine 0.1.3, TimescaleDB: viele neue Zustände werden auf einmal registriert. Vorher wurden die ersten Werte von einigen hunderttausend neuen Zuständen so langsam gespeichert, dass der Rückstau volllief und Änderungen verworfen wurden.",
